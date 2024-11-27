@@ -12,10 +12,9 @@ def generate_summary(model, tokenizer, prompt, device):
     # Ensure input is truncated if too long
     input_ids = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=1024)["input_ids"].to(device)
     
-    # Generate the output
-    gen_ids = model.generate(input_ids=input_ids, max_new_tokens=150, repetition_penalty=1.15)
+    print(f"Input IDs: {input_ids}")  # Debugging line to check tokenized input
     
-    # Decode the generated output
+    gen_ids = model.generate(input_ids=input_ids, max_new_tokens=150, repetition_penalty=1.15)
     output = tokenizer.decode(gen_ids[0], skip_special_tokens=True)
     return output.strip()
 
