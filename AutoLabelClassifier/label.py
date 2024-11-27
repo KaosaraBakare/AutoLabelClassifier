@@ -14,7 +14,7 @@ def generate_summary(model, tokenizer, prompt, device):
     
     print(f"Input IDs: {input_ids}")  # Debugging line to check tokenized input
     
-    gen_ids = model.generate(input_ids=input_ids, max_new_tokens=150, repetition_penalty=1.15)
+    gen_ids = model.generate(input_ids=input_ids, max_new_tokens=100, repetition_penalty=1.15)
     output = tokenizer.decode(gen_ids[0], skip_special_tokens=True)
     return output.strip()
 
