@@ -58,7 +58,8 @@ def main(
     model_name: str,
     transformers_cache: str,
     threshold: float = 0.5,
-    device="cuda:0",
+    device = "cuda:0" if torch.cuda.is_available() else "cpu"
+,
 ) -> None:
     """
     Main function for labeling the reports.
